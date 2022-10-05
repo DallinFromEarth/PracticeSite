@@ -5,6 +5,50 @@
     <title>Webecke's Practice Site</title>
 </head>
 <body>
-  
+    <h1>Webecke's Practice Site</h1>
+    <p>The number one place to see nonsense web programming</p>
+
+    <br>
+    <h3>Parks API</h3>
+    <p>Today we're testing javascript and APIs</p>
+    <form id="parkForm">
+        Enter your NPS API Key: <input type="text" id="apiKey" value=""><br>
+        Enter a park code: <input type="text" id="parkCode" value="" maxlength="4"><br>
+        <input id="infoButton" type="submit" value="Get Park Info"><br>
+    </form>
+    <h3><span id="parkName">Please enter a valid park code</span></h3>
+    Park Address: <span id="address"></span><br>
+    Park Description: <span id="description"></span><br>
+
+    <script>
+        const parkForm = document.getElementById("parkForm");
+        const parkCode = document.getElementById("parkCode");
+        const addressBox = document.getElementById("address");
+        const parkName = document.getElementById("parkName");
+        const description = document.getElementById("description");
+        const baseParkURL = 'https://developer.nps.gov/api/v1/parks?parkCode=';
+        const key = document.getElementById("apiKey");
+        parkForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            console.log("Button was pressed");
+            let callURL = baseParkURL + parkCode.value + "&api_key=" + key.value;
+            console.log(callURL);
+            fetch(callURL).then(response => {
+                return response.json();
+            }).then(data => {
+                // Work with JSON data here
+                parkName.textContent = data.data[0].fullName;
+                addressBox.textContent = data.data[0].addresses[0].line1 + "\n\n\n\n\n\n\n\n" + data.data[0].addresses[0].city + ", " + data.data[0].addresses[0].stateCode + " " + data.data[0].addresses[0].postalCode;
+                description.textContent = data.data[0].description;
+                console.log(data);
+                console.log("Hey");
+                console.log(data.data[0].fullName);
+                console.log("Hey2");
+            }).catch(err => {
+                // Do something for an error here
+                console.log("Fetch error")
+            });
+        });
+    </script>
 </body>
 </html>
