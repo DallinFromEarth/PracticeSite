@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>React - Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="mydiv"></div>
+
+
+    <script type="text/babel">
+        const root = ReactDOM.createRoot(
+            document.getElementById('mydiv')
+        );
+        const element = (
+            <div>
+                <h1>Hello, world</h1>
+                <h2>Goodbye, world</h2>
+                <a href="rendering.html">Check out the rending page</a><br></br>
+                <a href="components.html">Or the components page</a><br></br>
+                <a href="events.html">Or maybe the events page</a><br></br>
+                <a href="conditional.html">Or even the conditional rendering page</a><br></br>
+                <a href="lists.html">There's even a lists page</a><br></br>
+            </div>
+        );
+        root.render(element);
+    </script>
+</body>
+</html>

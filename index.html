@@ -12,7 +12,6 @@
     <h3>Parks API</h3>
     <p>Today we're testing javascript and APIs</p>
     <form id="parkForm">
-        Enter your NPS API Key: <input type="text" id="apiKey" value=""><br>
         Enter a park code: <input type="text" id="parkCode" value="" maxlength="4"><br>
         <input id="infoButton" type="submit" value="Get Park Info"><br>
     </form>
@@ -27,11 +26,11 @@
         const parkName = document.getElementById("parkName");
         const description = document.getElementById("description");
         const baseParkURL = 'https://developer.nps.gov/api/v1/parks?parkCode=';
-        const key = document.getElementById("apiKey");
+        const key = "3Kb9nfh2Z2t6Ti6EbqG4MaqdbGdUE8Nwo0XMdn9m";
         parkForm.addEventListener('submit', (e) => {
             e.preventDefault();
             console.log("Button was pressed");
-            let callURL = baseParkURL + parkCode.value + "&api_key=" + key.value;
+            let callURL = baseParkURL + parkCode.value + "&api_key=" + key;
             console.log(callURL);
             fetch(callURL).then(response => {
                 return response.json();
